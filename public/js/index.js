@@ -41,6 +41,9 @@ function initializeApp() {
     
     // Initialize newsletter form
     initializeNewsletterForm();
+    
+    // Initialize counter animations
+    initializeCounters();
 }
 
 /**
@@ -248,35 +251,67 @@ function renderFeaturedProducts(products) {
     if (products.length === 0) {
         productsGrid.innerHTML = `
             <div class="no-products" style="grid-column: 1/-1; text-align: center; padding: 3rem;">
-                <i class="fas fa-box-open" style="font-size: 3rem; color: var(--text-light); margin-bottom: 1rem;"></i>
-                <p style="color: var(--text-medium); font-size: 1.2rem;">No featured products available at the moment.</p>
+                <i class="fas fa-box-open" style="font-size: 3rem; color: var(--text-light);"></i>
+                <p style="margin-top: 1rem; color: var(--text-medium);">No featured products found.</p>
             </div>
         `;
         return;
     }
     
-    productsGrid.innerHTML = products.map(product => `
-        <article class="product-card" onclick="viewProduct('${product.id}')" data-aos="fade-up">
-            <div class="product-image">
+    productsGrid.innerHTML = '';
+    
+    // Product images based on category
+    const productImages = {
+        'pens': 'images/pen-placeholder.jpg',
+        'notebooks': 'images/notebook-placeholder.jpg',
+        'art-supplies': 'images/art-placeholder.jpg',
+        'desk-accessories': 'images/desk-placeholder.jpg',
+        'default': 'images/product-placeholder.jpg'
+    };
+    
+    products.forEach((product, index) => {
+        // Create product card with animation
+        const delay = index * 100;
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        productCard.setAttribute('data-aos', 'fade-up');
+        productCard.setAttribute('data-aos-delay', delay);
+        
+        // Use placeholder image based on category or default
+        const imageSrc = productImages[product.category] || productImages.default;
+        
+        productCard.innerHTML = `
+            <div class="product-image" style="background-image: url('${imageSrc}');">
                 <div class="product-category">${formatCategory(product.category)}</div>
-                <div class="product-placeholder" style="background: ${getProductColor(product.category)}">
-                    <div class="product-icon">
-                        <i class="${getProductIcon(product.category)}"></i>
-                    </div>
-                    <div class="product-placeholder-text">${product.name}</div>
-                </div>
             </div>
             <div class="product-info">
                 <h3 class="product-name">${product.name}</h3>
-                <p class="product-brand">${formatBrand(product.brand)}</p>
-                <p class="product-price">$${product.price.toFixed(2)}</p>
-                <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('${product.id}')">
-                    <i class="fas fa-shopping-cart"></i>
-                    Add to Cart
+                <div class="product-brand">${formatBrand(product.brand)}</div>
+                <div class="product-price">$${product.price.toFixed(2)}</div>
+                <button class="add-to-cart" onclick="addToCart('${product.id}')">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
                 </button>
             </div>
-        </article>
-    `).join('');
+        `;
+        
+        // Add hover animation class
+        productCard.addEventListener('mouseenter', () => {
+            productCard.classList.add('pulse');
+        });
+        
+        productCard.addEventListener('mouseleave', () => {
+            productCard.classList.remove('pulse');
+        });
+        
+        // Add click handler for product detail page
+        productCard.addEventListener('click', (e) => {
+            if (!e.target.classList.contains('add-to-cart')) {
+                viewProduct(product.id);
+            }
+        });
+        
+        productsGrid.appendChild(productCard);
+    });
 }
 
 /**
@@ -666,4 +701,57 @@ function subscribeNewsletter(event) {
         }
     `;
     document.head.appendChild(style);
-})(); 
+})();
+
+/**
+ * Initialize counter animations for stats
+ */
+function initializeCounters() {
+    // Client counter
+    animateCounter('clientCounter', 0, 5000, 2000, '+');
+    
+    // Brand counter
+    animateCounter('brandCounter', 0, 50, 1500, '+');
+}
+
+/**
+ * Animate a counter from start to end value
+ * @param {string} elementId - The ID of the element to animate
+ * @param {number} start - Starting value
+ * @param {number} end - Ending value
+ * @param {number} duration - Duration in milliseconds
+ * @param {string} suffix - Optional suffix to add after the number
+ */
+function animateCounter(elementId, start, end, duration, suffix = '') {
+    const element = document.getElementById(elementId);
+    if (!element) return;
+    
+    // Check if element is in viewport before starting animation
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Start animation when element is visible
+                let startTime = null;
+                
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    const progress = Math.min((timestamp - startTime) / duration, 1);
+                    const value = Math.floor(progress * (end - start) + start);
+                    element.textContent = value + suffix;
+                    
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    } else {
+                        // Animation complete
+                        element.textContent = end + suffix;
+                        observer.disconnect();
+                    }
+                }
+                
+                window.requestAnimationFrame(step);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    observer.observe(element);
+} 

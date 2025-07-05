@@ -16,6 +16,8 @@
     
     <!-- Custom Styles -->
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/product-placeholders.css">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -53,16 +55,16 @@
         <section class="hero" id="home">
             <div class="hero-bg-overlay"></div>
             <div class="hero-container">
-                <div class="hero-content" data-aos="fade-up">
+                <div class="hero-content">
                     <h1 class="hero-title">
-                        <span class="title-accent">Craftsmanship & Quality</span>
-                        <span class="title-main">Elevate Your Workspace</span>
+                        <span class="title-accent slide-in-left">Craftsmanship & Quality</span>
+                        <span class="title-main slide-in-right delay-300">Elevate Your Workspace</span>
                     </h1>
-                    <p class="hero-subtitle">
+                    <p class="hero-subtitle slide-in-bottom delay-500">
                         Discover the art of writing and creativity with our curated collection of premium stationery and office supplies. Experience the difference of true craftsmanship.
                     </p>
-                    <div class="hero-actions">
-                        <a href="products.html" class="btn btn-primary">
+                    <div class="hero-actions fade-in delay-700">
+                        <a href="products.html" class="btn btn-primary pulse">
                             <i class="fas fa-arrow-right"></i> Shop Collection
                         </a>
                         <a href="about.html" class="btn btn-secondary">
@@ -70,7 +72,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="hero-scroll-indicator">
+                <div class="hero-scroll-indicator float">
                     <span>Scroll</span>
                     <i class="fas fa-chevron-down"></i>
                 </div>
@@ -80,23 +82,23 @@
         <!-- Stats Section -->
         <section class="luxury-stats-section" data-aos="fade-up">
             <div class="stats-container">
-                <div class="stat-card">
-                    <i class="fas fa-users stat-icon"></i>
-                    <div class="stat-number">5,000+</div>
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-users stat-icon pulse"></i>
+                    <div class="stat-number" id="clientCounter">0</div>
                     <div class="stat-label">Happy Clients</div>
                 </div>
-                <div class="stat-card">
-                    <i class="fas fa-star stat-icon"></i>
-                    <div class="stat-number">50+</div>
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-star stat-icon pulse"></i>
+                    <div class="stat-number" id="brandCounter">0</div>
                     <div class="stat-label">Premium Brands</div>
                 </div>
-                <div class="stat-card">
-                    <i class="fas fa-shipping-fast stat-icon"></i>
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-shipping-fast stat-icon pulse"></i>
                     <div class="stat-number">Free</div>
                     <div class="stat-label">Shipping Over $50</div>
                 </div>
-                <div class="stat-card">
-                    <i class="fas fa-headset stat-icon"></i>
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fas fa-headset stat-icon pulse"></i>
                     <div class="stat-number">24/7</div>
                     <div class="stat-label">Support</div>
                 </div>
@@ -122,8 +124,8 @@
                         <i class="fas fa-arrow-right"></i> Learn More About Us
                     </a>
                 </div>
-                <div class="about-visual">
-                    <img src="images/about-preview.jpg" alt="Premium Stationery Collection" />
+                <div class="about-visual" data-aos="fade-left" data-aos-delay="300">
+                    <!-- We'll use a CSS placeholder instead of an actual image -->
                 </div>
             </div>
         </section>
@@ -139,28 +141,28 @@
                     <p class="section-subtitle">Browse through our carefully curated collections</p>
                 </div>
                 <div class="categories-grid">
-                    <a href="products.html?category=pens" class="category-card">
+                    <a href="products.html?category=pens" class="category-card" data-aos="fade-up">
                         <div class="category-icon"><i class="fas fa-pen-fancy"></i></div>
                         <div class="category-content">
                             <h3 class="category-name">Premium Pens</h3>
                             <p class="category-description">Elegant writing instruments for every occasion</p>
                         </div>
                     </a>
-                    <a href="products.html?category=notebooks" class="category-card">
+                    <a href="products.html?category=notebooks" class="category-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="category-icon"><i class="fas fa-book-open"></i></div>
                         <div class="category-content">
                             <h3 class="category-name">Notebooks</h3>
                             <p class="category-description">Luxury journals & planners for your thoughts</p>
                         </div>
                     </a>
-                    <a href="products.html?category=art-supplies" class="category-card">
+                    <a href="products.html?category=art-supplies" class="category-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="category-icon"><i class="fas fa-paint-brush"></i></div>
                         <div class="category-content">
                             <h3 class="category-name">Art Supplies</h3>
                             <p class="category-description">Professional-grade materials for artists</p>
                         </div>
                     </a>
-                    <a href="products.html?category=desk-accessories" class="category-card">
+                    <a href="products.html?category=desk-accessories" class="category-card" data-aos="fade-up" data-aos-delay="300">
                         <div class="category-icon"><i class="fas fa-desktop"></i></div>
                         <div class="category-content">
                             <h3 class="category-name">Desk Accessories</h3>
