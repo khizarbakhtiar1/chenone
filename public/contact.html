@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - ChenOne</title>
+    <meta name="description" content="Get in touch with ChenOne. Contact us for support, inquiries, or feedback. We're here to help with all your stationery needs.">
+    
+    <!-- External Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="/" class="logo">
+                        <i class="fas fa-pen-nib"></i>
+                        <span>ChenOne</span>
+                    </a>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="products.html" class="nav-link">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link active">Contact</a>
+                    </li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <button class="mobile-menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="contact-hero">
+            <div class="hero-background">
+                <div class="hero-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                </div>
+            </div>
+            
+            <div class="hero-container">
+                <div class="hero-content" data-aos="fade-up">
+                    <h1 class="hero-title">
+                        <span class="title-accent">Get in Touch</span>
+                        <span class="title-main">We're Here to Help</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Have a question, need support, or want to share feedback? We'd love to hear from you. Our team is ready to assist with all your stationery needs.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Methods Section -->
+        <section class="contact-methods" data-aos="fade-up">
+            <div class="section-container">
+                <div class="methods-grid">
+                    <div class="method-card">
+                        <div class="method-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3 class="method-title">Call Us</h3>
+                        <p class="method-description">Speak directly with our support team</p>
+                        <div class="method-details">
+                            <a href="tel:+15551234567" class="method-link">+1 (555) 123-4567</a>
+                            <span class="method-note">Mon-Fri, 9AM-6PM EST</span>
+                        </div>
+                    </div>
+                    
+                    <div class="method-card">
+                        <div class="method-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 class="method-title">Email Us</h3>
+                        <p class="method-description">Send us a detailed message</p>
+                        <div class="method-details">
+                            <a href="mailto:info@chenone.com" class="method-link">info@chenone.com</a>
+                            <span class="method-note">Response within 24 hours</span>
+                        </div>
+                    </div>
+                    
+                    <div class="method-card">
+                        <div class="method-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3 class="method-title">Live Chat</h3>
+                        <p class="method-description">Chat with us in real-time</p>
+                        <div class="method-details">
+                            <button class="method-link chat-button" onclick="openLiveChat()">Start Chat</button>
+                            <span class="method-note">Available 9AM-9PM EST</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form & Info Section -->
+        <section class="contact-main" data-aos="fade-up">
+            <div class="section-container">
+                <div class="contact-grid">
+                    <!-- Contact Form -->
+                    <div class="contact-form-section">
+                        <div class="form-header">
+                            <h2 class="form-title">Send us a Message</h2>
+                            <p class="form-subtitle">Fill out the form below and we'll get back to you as soon as possible.</p>
+                        </div>
+                        
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName" class="form-label">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName" class="form-label">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" class="form-input" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" id="email" name="email" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" class="form-input">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject" class="form-label">Subject *</label>
+                                <select id="subject" name="subject" class="form-select" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="support">Product Support</option>
+                                    <option value="order">Order Status</option>
+                                    <option value="return">Returns & Exchanges</option>
+                                    <option value="wholesale">Wholesale Inquiry</option>
+                                    <option value="partnership">Partnership</option>
+                                    <option value="feedback">Feedback</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="form-label">Message *</label>
+                                <textarea id="message" name="message" class="form-textarea" rows="6" placeholder="Tell us how we can help you..." required></textarea>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="newsletter" name="newsletter" class="form-checkbox">
+                                    <span class="checkbox-text">Subscribe to our newsletter for updates and exclusive offers</span>
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="form-submit">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Contact Information -->
+                    <div class="contact-info-section">
+                        <div class="info-card">
+                            <h3 class="info-title">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Visit Our Store
+                            </h3>
+                            <div class="info-content">
+                                <p class="info-address">
+                                    123 Business Street<br>
+                                    Suite 456<br>
+                                    New York, NY 10001
+                                </p>
+                                <a href="https://maps.google.com" target="_blank" class="info-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Get Directions
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <h3 class="info-title">
+                                <i class="fas fa-clock"></i>
+                                Business Hours
+                            </h3>
+                            <div class="info-content">
+                                <div class="hours-list">
+                                    <div class="hours-item">
+                                        <span class="hours-day">Monday - Friday</span>
+                                        <span class="hours-time">9:00 AM - 6:00 PM</span>
+                                    </div>
+                                    <div class="hours-item">
+                                        <span class="hours-day">Saturday</span>
+                                        <span class="hours-time">10:00 AM - 4:00 PM</span>
+                                    </div>
+                                    <div class="hours-item">
+                                        <span class="hours-day">Sunday</span>
+                                        <span class="hours-time">Closed</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <h3 class="info-title">
+                                <i class="fas fa-headset"></i>
+                                Customer Support
+                            </h3>
+                            <div class="info-content">
+                                <p class="support-text">
+                                    Our dedicated support team is here to help with any questions or concerns.
+                                </p>
+                                <div class="support-options">
+                                    <a href="mailto:support@chenone.com" class="support-link">
+                                        <i class="fas fa-envelope"></i>
+                                        support@chenone.com
+                                    </a>
+                                    <a href="tel:+15551234567" class="support-link">
+                                        <i class="fas fa-phone"></i>
+                                        +1 (555) 123-4567
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <h3 class="info-title">
+                                <i class="fas fa-share-alt"></i>
+                                Follow Us
+                            </h3>
+                            <div class="info-content">
+                                <p class="social-text">
+                                    Stay connected for updates, tips, and exclusive offers.
+                                </p>
+                                <div class="social-links">
+                                    <a href="#" class="social-link">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="#" class="social-link">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-link">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="#" class="social-link">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="#" class="social-link">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" data-aos="fade-up">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-accent">Frequently Asked</span>
+                        <span class="title-main">Questions</span>
+                    </h2>
+                    <p class="section-subtitle">Quick answers to common questions</p>
+                </div>
+                
+                <div class="faq-grid">
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="faq-question">
+                            <h4>What are your shipping options?</h4>
+                            <i class="fas fa-plus faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We offer free standard shipping on orders over $50. Express shipping is available for $9.99, and overnight shipping for $19.99. International shipping is available to over 50 countries.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="faq-question">
+                            <h4>What is your return policy?</h4>
+                            <i class="fas fa-plus faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We offer a 30-day return policy for unused items in original packaging. Simply contact our support team to initiate a return, and we'll provide a prepaid shipping label.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="faq-question">
+                            <h4>Do you offer wholesale pricing?</h4>
+                            <i class="fas fa-plus faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! We offer competitive wholesale pricing for bulk orders. Please contact us with your business information and order requirements for a custom quote.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                        <div class="faq-question">
+                            <h4>Are your products authentic?</h4>
+                            <i class="fas fa-plus faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely! We source all products directly from authorized manufacturers and distributors. Every item comes with a guarantee of authenticity.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
+                        <div class="faq-question">
+                            <h4>How can I track my order?</h4>
+                            <i class="fas fa-plus faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Once your order ships, you'll receive a tracking number via email. You can also log into your account on our website to view order status and tracking information.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="600">
+                        <div class="faq-question">
+                            <h4>Do you offer gift wrapping?</h4>
+                            <i class="fas fa-plus faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! We offer premium gift wrapping for $4.99 per item. You can also include a personalized message card. Perfect for special occasions!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-section" data-aos="fade-up">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Find Us</h2>
+                    <p class="section-subtitle">Visit our flagship store in the heart of the city</p>
+                </div>
+                
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <div class="map-content">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>ChenOne Flagship Store</h3>
+                            <p>123 Business Street, Suite 456<br>New York, NY 10001</p>
+                            <a href="https://maps.google.com" target="_blank" class="map-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Open in Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">
+                    <i class="fas fa-pen-nib"></i>
+                    ChenOne
+                </h3>
+                <p class="footer-description">
+                    Premium stationery and office supplies for professionals, students, and creatives. Elevate your workspace with our curated collection.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">Customer Service</h3>
+                <ul class="footer-links">
+                    <li><a href="#shipping">Shipping Info</a></li>
+                    <li><a href="#returns">Returns</a></li>
+                    <li><a href="#support">Support</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">Contact Info</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Business Street, City, State 12345</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@chenone.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 ChenOne. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html> 

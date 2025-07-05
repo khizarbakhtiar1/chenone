@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Fountain Pen - ChenOne</title>
+
+    <!-- External Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/product-detail.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-pen-nib"></i>
+                        <span>ChenOne</span>
+                    </a>
+                </div>
+
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="products.html" class="nav-link">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a>
+                    <button class="mobile-menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="index.html">Home</a> > <a href="products.html">Products</a> > <a href="products.html">Pens</a> > Premium Fountain Pen
+        </nav>
+
+        <section class="product-detail">
+            <div class="product-layout">
+                <div class="product-image-container">
+                    <div class="product-image">
+                        <div class="product-badge">Premium</div>
+                        <span>Premium Fountain Pen Image</span>
+                    </div>
+                    <div class="image-gallery">
+                        <div class="thumbnail active">View 1</div>
+                        <div class="thumbnail">View 2</div>
+                        <div class="thumbnail">View 3</div>
+                        <div class="thumbnail">View 4</div>
+                    </div>
+                </div>
+
+                <div class="product-info">
+                    <div class="product-category">Writing Instruments</div>
+                    <h1 class="product-title">Premium Fountain Pen</h1>
+                    <p class="product-brand">by Lamy</p>
+                    <div class="product-price">$45.99</div>
+                    
+                    <div class="product-description">
+                        <p>Experience the art of writing with our premium fountain pen. Crafted with precision and elegance, this pen features a smooth ink flow system and ergonomic grip for comfortable extended writing sessions. Perfect for professionals, students, and writing enthusiasts.</p>
+                    </div>
+
+                    <div class="product-options">
+                        <div class="option-group">
+                            <label class="option-label">Color</label>
+                            <select class="option-select" id="colorSelect">
+                                <option value="black">Classic Black</option>
+                                <option value="blue">Ocean Blue</option>
+                                <option value="silver">Elegant Silver</option>
+                                <option value="gold">Luxury Gold</option>
+                            </select>
+                        </div>
+
+                        <div class="option-group">
+                            <label class="option-label">Nib Size</label>
+                            <select class="option-select" id="nibSelect">
+                                <option value="fine">Fine (F)</option>
+                                <option value="medium">Medium (M)</option>
+                                <option value="broad">Broad (B)</option>
+                                <option value="extra-fine">Extra Fine (EF)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="quantity-section">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                            <input type="number" class="quantity-input" id="quantityInput" value="1" min="1" max="10">
+                            <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                        </div>
+                        <span class="stock-status">✓ In Stock (15 available)</span>
+                    </div>
+
+                    <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <strong>SKU:</strong> FP-LAM-001
+                        </div>
+                        <div class="meta-item">
+                            <strong>Category:</strong> Fountain Pens
+                        </div>
+                        <div class="meta-item">
+                            <strong>Brand:</strong> Lamy
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="related-products">
+            <h2 class="section-title">Related Products</h2>
+            <div class="related-grid">
+                <article class="related-card">
+                    <div class="related-image">Ballpoint Pen Image</div>
+                    <h3 class="related-name">Executive Ballpoint Pen</h3>
+                    <p class="related-price">$89.99</p>
+                    <button class="related-btn" onclick="viewProduct('executive-ballpoint')">View Details</button>
+                </article>
+
+                <article class="related-card">
+                    <div class="related-image">Ink Bottle Image</div>
+                    <h3 class="related-name">Premium Ink Bottle</h3>
+                    <p class="related-price">$12.99</p>
+                    <button class="related-btn" onclick="viewProduct('ink-bottle')">View Details</button>
+                </article>
+
+                <article class="related-card">
+                    <div class="related-image">Pen Case Image</div>
+                    <h3 class="related-name">Leather Pen Case</h3>
+                    <p class="related-price">$35.99</p>
+                    <button class="related-btn" onclick="viewProduct('pen-case')">View Details</button>
+                </article>
+            </div>
+        </section>
+    </div>
+
+    <div class="success-message" id="successMessage">
+        <p>✓ Product added to cart successfully!</p>
+    </div>
+
+    <!-- Load external JavaScript for dynamic functionality -->
+    <script src="/js/product-detail.js"></script>
+    
+    <script>
+        // Additional page-specific functionality
+        
+        // Input validation for quantity (enhanced)
+        document.addEventListener('DOMContentLoaded', function() {
+            const quantityInput = document.getElementById('quantityInput');
+            if (quantityInput) {
+                quantityInput.addEventListener('input', function() {
+                    const value = parseInt(this.value);
+                    const min = parseInt(this.getAttribute('min')) || 1;
+                    const max = parseInt(this.getAttribute('max')) || 10;
+                    
+                    if (value < min) this.value = min;
+                    if (value > max) this.value = max;
+                });
+            }
+        });
+        
+        // Cart management functions (for potential future use)
+        function getCart() {
+            return JSON.parse(localStorage.getItem('cart') || '[]');
+        }
+
+        function clearCart() {
+            localStorage.removeItem('cart');
+            if (typeof updateCartCount === 'function') {
+                updateCartCount();
+            }
+        }
+
+        function removeFromCart(productId, color, nibSize, size) {
+            let cart = getCart();
+            cart = cart.filter(item => 
+                !(item.id === productId && 
+                  item.color === color && 
+                  item.nibSize === nibSize &&
+                  item.size === size)
+            );
+            localStorage.setItem('cart', JSON.stringify(cart));
+            if (typeof updateCartCount === 'function') {
+                updateCartCount();
+            }
+        }
+        
+        // Make functions globally available
+        window.getCart = getCart;
+        window.clearCart = clearCart;
+        window.removeFromCart = removeFromCart;
+    </script>
+</body>
+</html> 
