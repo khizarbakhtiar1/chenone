@@ -1,5 +1,9 @@
 # ChenOne E-commerce - Premium Stationery
 
+> **⚠️ Disclaimer: This is a fun learning project!** 
+> 
+> I have never built an e-commerce website before, so this project serves as my first attempt at creating a complete online store. It's built purely for educational purposes and to explore web development concepts. The code may not follow all best practices, but it represents my learning journey in web development.
+
 A minimalist e-commerce website for premium stationery built with vanilla Node.js using only built-in modules.
 
 ## 🚀 Features

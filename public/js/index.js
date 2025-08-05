@@ -4,186 +4,189 @@
  */
 
 // Initialize page
-document.addEventListener('DOMContentLoaded', function() {
-    initializeApp();
+document.addEventListener("DOMContentLoaded", function () {
+  initializeApp();
 });
 
 /**
  * Initialize the application
  */
 function initializeApp() {
-    // Initialize AOS (Animate On Scroll)
-    AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true,
-        mirror: false,
-        offset: 100
-    });
+  // Initialize AOS (Animate On Scroll)
+  AOS.init({
+    duration: 800,
+    easing: "ease-in-out",
+    once: true,
+    mirror: false,
+    offset: 100,
+  });
 
-    // Load featured products
-    loadFeaturedProducts();
-    
-    // Update cart count
-    updateCartCount();
-    
-    // Initialize mobile menu
-    initializeMobileMenu();
-    
-    // Initialize smooth scrolling
-    initializeSmoothScrolling();
-    
-    // Initialize header scroll effect
-    initializeHeaderScroll();
-    
-    // Initialize hover effects
-    initializeHoverEffects();
-    
-    // Initialize newsletter form
-    initializeNewsletterForm();
-    
-    // Initialize counter animations
-    initializeCounters();
+  // Load featured products
+  loadFeaturedProducts();
+
+  // Update cart count
+  updateCartCount();
+
+  // Initialize mobile menu
+  initializeMobileMenu();
+
+  // Initialize smooth scrolling
+  initializeSmoothScrolling();
+
+  // Initialize header scroll effect
+  initializeHeaderScroll();
+
+  // Initialize hover effects
+  initializeHoverEffects();
+
+  // Initialize newsletter form
+  initializeNewsletterForm();
+
+  // Initialize counter animations
+  initializeCounters();
 }
 
 /**
  * Initialize mobile menu functionality
  */
 function initializeMobileMenu() {
-    const mobileToggle = document.querySelector('.mobile-menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    if (mobileToggle && navMenu) {
-        mobileToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            const icon = this.querySelector('i');
-            
-            if (navMenu.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                document.body.style.overflow = ''; // Re-enable scrolling
-            }
-        });
-        
-        // Close mobile menu when clicking on links
-        const navLinks = navMenu.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                const icon = mobileToggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                document.body.style.overflow = ''; // Re-enable scrolling
-            });
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (navMenu.classList.contains('active') && 
-                !navMenu.contains(event.target) && 
-                !mobileToggle.contains(event.target)) {
-                navMenu.classList.remove('active');
-                const icon = mobileToggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                document.body.style.overflow = '';
-            }
-        });
-    }
+  const mobileToggle = document.querySelector(".mobile-menu-toggle");
+  const navMenu = document.querySelector(".nav-menu");
+
+  if (mobileToggle && navMenu) {
+    mobileToggle.addEventListener("click", function () {
+      navMenu.classList.toggle("active");
+      const icon = this.querySelector("i");
+
+      if (navMenu.classList.contains("active")) {
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-times");
+        document.body.style.overflow = "hidden"; // Prevent scrolling when menu is open
+      } else {
+        icon.classList.remove("fa-times");
+        icon.classList.add("fa-bars");
+        document.body.style.overflow = ""; // Re-enable scrolling
+      }
+    });
+
+    // Close mobile menu when clicking on links
+    const navLinks = navMenu.querySelectorAll(".nav-link");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+        const icon = mobileToggle.querySelector("i");
+        icon.classList.remove("fa-times");
+        icon.classList.add("fa-bars");
+        document.body.style.overflow = ""; // Re-enable scrolling
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", function (event) {
+      if (
+        navMenu.classList.contains("active") &&
+        !navMenu.contains(event.target) &&
+        !mobileToggle.contains(event.target)
+      ) {
+        navMenu.classList.remove("active");
+        const icon = mobileToggle.querySelector("i");
+        icon.classList.remove("fa-times");
+        icon.classList.add("fa-bars");
+        document.body.style.overflow = "";
+      }
+    });
+  }
 }
 
 /**
  * Initialize smooth scrolling for anchor links
  */
 function initializeSmoothScrolling() {
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    
-    anchorLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href !== '#' && href !== '') {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    const headerOffset = 80;
-                    const elementPosition = target.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            }
-        });
+  const anchorLinks = document.querySelectorAll('a[href^="#"]');
+
+  anchorLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      const href = this.getAttribute("href");
+      if (href !== "#" && href !== "") {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          const headerOffset = 80;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition =
+            elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }
+      }
     });
+  });
 }
 
 /**
  * Initialize header scroll effect
  */
 function initializeHeaderScroll() {
-    const header = document.querySelector('.header');
-    
-    if (header) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-    }
+  const header = document.querySelector(".header");
+
+  if (header) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+  }
 }
 
 /**
  * Initialize hover effects
  */
 function initializeHoverEffects() {
-    // Add hover effects to category cards
-    const categoryCards = document.querySelectorAll('.category-card');
-    categoryCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            const icon = this.querySelector('.category-icon i');
-            if (icon) {
-                icon.classList.add('fa-bounce');
-            }
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            const icon = this.querySelector('.category-icon i');
-            if (icon) {
-                icon.classList.remove('fa-bounce');
-            }
-        });
+  // Add hover effects to category cards
+  const categoryCards = document.querySelectorAll(".category-card");
+  categoryCards.forEach((card) => {
+    card.addEventListener("mouseenter", function () {
+      const icon = this.querySelector(".category-icon i");
+      if (icon) {
+        icon.classList.add("fa-bounce");
+      }
     });
+
+    card.addEventListener("mouseleave", function () {
+      const icon = this.querySelector(".category-icon i");
+      if (icon) {
+        icon.classList.remove("fa-bounce");
+      }
+    });
+  });
 }
 
 /**
  * Initialize newsletter form
  */
 function initializeNewsletterForm() {
-    const newsletterForm = document.querySelector('.newsletter-form');
-    
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', subscribeNewsletter);
-    }
+  const newsletterForm = document.querySelector(".newsletter-form");
+
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", subscribeNewsletter);
+  }
 }
 
 /**
  * Load featured products from API
  */
 async function loadFeaturedProducts() {
-    const productsGrid = document.getElementById('featuredProducts');
-    if (!productsGrid) return;
-    
-    try {
-        // Show loading state
-        productsGrid.innerHTML = `
+  const productsGrid = document.getElementById("featuredProducts");
+  if (!productsGrid) return;
+
+  try {
+    // Show loading state
+    productsGrid.innerHTML = `
             <div class="loading-state" style="grid-column: 1/-1; text-align: center; padding: 3rem;">
                 <div class="loading-spinner">
                     <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: var(--primary-color);"></i>
@@ -191,53 +194,53 @@ async function loadFeaturedProducts() {
                 <p style="margin-top: 1rem; color: var(--text-medium);">Loading featured products...</p>
             </div>
         `;
-        
-        const response = await fetch('/api/products?featured=true');
-        const result = await response.json();
-        
-        if (result.success) {
-            renderFeaturedProducts(result.data);
-        } else {
-            console.error('Failed to load featured products:', result.error);
-            showErrorMessage('Failed to load featured products');
-        }
-    } catch (error) {
-        console.error('Error loading featured products:', error);
-        
-        // For demo purposes, render sample products if API fails
-        const sampleProducts = [
-            {
-                id: 'pen1',
-                name: 'Montblanc Meisterstück',
-                category: 'pens',
-                brand: 'Montblanc',
-                price: 499.99
-            },
-            {
-                id: 'notebook1',
-                name: 'Moleskine Classic Notebook',
-                category: 'notebooks',
-                brand: 'Moleskine',
-                price: 24.95
-            },
-            {
-                id: 'art1',
-                name: 'Faber-Castell Polychromos Set',
-                category: 'art-supplies',
-                brand: 'Faber-Castell',
-                price: 149.99
-            },
-            {
-                id: 'desk1',
-                name: 'Leather Desk Pad Protector',
-                category: 'desk-accessories',
-                brand: 'ChenOne',
-                price: 89.95
-            }
-        ];
-        
-        renderFeaturedProducts(sampleProducts);
+
+    const response = await fetch("/api/products?featured=true");
+    const result = await response.json();
+
+    if (result.success) {
+      renderFeaturedProducts(result.data);
+    } else {
+      console.error("Failed to load featured products:", result.error);
+      showErrorMessage("Failed to load featured products");
     }
+  } catch (error) {
+    console.error("Error loading featured products:", error);
+
+    // For demo purposes, render sample products if API fails
+    const sampleProducts = [
+      {
+        id: "pen1",
+        name: "Montblanc Meisterstück",
+        category: "pens",
+        brand: "Montblanc",
+        price: 499.99,
+      },
+      {
+        id: "notebook1",
+        name: "Moleskine Classic Notebook",
+        category: "notebooks",
+        brand: "Moleskine",
+        price: 24.95,
+      },
+      {
+        id: "art1",
+        name: "Faber-Castell Polychromos Set",
+        category: "art-supplies",
+        brand: "Faber-Castell",
+        price: 149.99,
+      },
+      {
+        id: "desk1",
+        name: "Leather Desk Pad Protector",
+        category: "desk-accessories",
+        brand: "ChenOne",
+        price: 89.95,
+      },
+    ];
+
+    renderFeaturedProducts(sampleProducts);
+  }
 }
 
 /**
@@ -245,73 +248,90 @@ async function loadFeaturedProducts() {
  * @param {Array} products - Featured products
  */
 function renderFeaturedProducts(products) {
-    const productsGrid = document.getElementById('featuredProducts');
-    if (!productsGrid) return;
-    
-    if (products.length === 0) {
-        productsGrid.innerHTML = `
+  const productsGrid = document.getElementById("featuredProducts");
+  if (!productsGrid) return;
+
+  if (products.length === 0) {
+    productsGrid.innerHTML = `
             <div class="no-products" style="grid-column: 1/-1; text-align: center; padding: 3rem;">
                 <i class="fas fa-box-open" style="font-size: 3rem; color: var(--text-light);"></i>
                 <p style="margin-top: 1rem; color: var(--text-medium);">No featured products found.</p>
             </div>
         `;
-        return;
-    }
-    
-    productsGrid.innerHTML = '';
-    
-    // Product images based on category
-    const productImages = {
-        'pens': 'images/pen-placeholder.jpg',
-        'notebooks': 'images/notebook-placeholder.jpg',
-        'art-supplies': 'images/art-placeholder.jpg',
-        'desk-accessories': 'images/desk-placeholder.jpg',
-        'default': 'images/product-placeholder.jpg'
-    };
-    
-    products.forEach((product, index) => {
-        // Create product card with animation
-        const delay = index * 100;
-        const productCard = document.createElement('div');
-        productCard.className = 'product-card';
-        productCard.setAttribute('data-aos', 'fade-up');
-        productCard.setAttribute('data-aos-delay', delay);
-        
-        // Use placeholder image based on category or default
-        const imageSrc = productImages[product.category] || productImages.default;
-        
-        productCard.innerHTML = `
-            <div class="product-image" style="background-image: url('${imageSrc}');">
-                <div class="product-category">${formatCategory(product.category)}</div>
+    return;
+  }
+
+  productsGrid.innerHTML = "";
+
+  // Product colors and icons based on category
+  const productColors = {
+    pens: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    notebooks: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+    "art-supplies": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+    "desk-accessories": "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
+  };
+
+  const productIcons = {
+    pens: "fas fa-pen-fancy",
+    notebooks: "fas fa-book",
+    "art-supplies": "fas fa-palette",
+    "desk-accessories": "fas fa-desktop",
+  };
+
+  products.forEach((product, index) => {
+    // Create product card with animation
+    const delay = index * 100;
+    const productCard = document.createElement("div");
+    productCard.className = "product-card";
+    productCard.setAttribute("data-aos", "fade-up");
+    productCard.setAttribute("data-aos-delay", delay);
+
+    // Get product color and icon based on category
+    const productColor = productColors[product.category] || productColors.pens;
+    const productIcon = productIcons[product.category] || productIcons.pens;
+
+    productCard.innerHTML = `
+            <div class="product-image">
+                <div class="product-category">${formatCategory(
+                  product.category
+                )}</div>
+                <div class="product-placeholder" style="background: ${productColor}">
+                    <div class="product-icon">
+                        <i class="${productIcon}"></i>
+                    </div>
+                    <div class="product-placeholder-text">${product.name}</div>
+                </div>
             </div>
             <div class="product-info">
                 <h3 class="product-name">${product.name}</h3>
                 <div class="product-brand">${formatBrand(product.brand)}</div>
                 <div class="product-price">$${product.price.toFixed(2)}</div>
-                <button class="add-to-cart" onclick="addToCart('${product.id}')">
+                <button class="add-to-cart" onclick="addToCart('${
+                  product.id
+                }')">
                     <i class="fas fa-shopping-cart"></i> Add to Cart
                 </button>
             </div>
         `;
-        
-        // Add hover animation class
-        productCard.addEventListener('mouseenter', () => {
-            productCard.classList.add('pulse');
-        });
-        
-        productCard.addEventListener('mouseleave', () => {
-            productCard.classList.remove('pulse');
-        });
-        
-        // Add click handler for product detail page
-        productCard.addEventListener('click', (e) => {
-            if (!e.target.classList.contains('add-to-cart')) {
-                viewProduct(product.id);
-            }
-        });
-        
-        productsGrid.appendChild(productCard);
+
+    // Add hover animation class
+    productCard.addEventListener("mouseenter", () => {
+      productCard.classList.add("pulse");
     });
+
+    productCard.addEventListener("mouseleave", () => {
+      productCard.classList.remove("pulse");
+    });
+
+    // Add click handler for product detail page
+    productCard.addEventListener("click", (e) => {
+      if (!e.target.classList.contains("add-to-cart")) {
+        viewProduct(product.id);
+      }
+    });
+
+    productsGrid.appendChild(productCard);
+  });
 }
 
 /**
@@ -320,13 +340,15 @@ function renderFeaturedProducts(products) {
  * @returns {string} - Color gradient
  */
 function getProductColor(category) {
-    const colors = {
-        'pens': 'linear-gradient(135deg, #3a5a40 0%, #588157 100%)',
-        'notebooks': 'linear-gradient(135deg, #344e41 0%, #3a5a40 100%)',
-        'art-supplies': 'linear-gradient(135deg, #588157 0%, #a3b18a 100%)',
-        'desk-accessories': 'linear-gradient(135deg, #344e41 0%, #588157 100%)'
-    };
-    return colors[category] || 'linear-gradient(135deg, #3a5a40 0%, #588157 100%)';
+  const colors = {
+    pens: "linear-gradient(135deg, #3a5a40 0%, #588157 100%)",
+    notebooks: "linear-gradient(135deg, #344e41 0%, #3a5a40 100%)",
+    "art-supplies": "linear-gradient(135deg, #588157 0%, #a3b18a 100%)",
+    "desk-accessories": "linear-gradient(135deg, #344e41 0%, #588157 100%)",
+  };
+  return (
+    colors[category] || "linear-gradient(135deg, #3a5a40 0%, #588157 100%)"
+  );
 }
 
 /**
@@ -335,13 +357,13 @@ function getProductColor(category) {
  * @returns {string} - FontAwesome icon class
  */
 function getProductIcon(category) {
-    const icons = {
-        'pens': 'fas fa-pen-fancy',
-        'notebooks': 'fas fa-book',
-        'art-supplies': 'fas fa-palette',
-        'desk-accessories': 'fas fa-desktop'
-    };
-    return icons[category] || 'fas fa-box';
+  const icons = {
+    pens: "fas fa-pen-fancy",
+    notebooks: "fas fa-book",
+    "art-supplies": "fas fa-palette",
+    "desk-accessories": "fas fa-desktop",
+  };
+  return icons[category] || "fas fa-box";
 }
 
 /**
@@ -349,89 +371,88 @@ function getProductIcon(category) {
  * @param {string} productId - Product ID
  */
 async function addToCart(productId) {
-    try {
-        const response = await fetch(`/api/product?id=${productId}`);
-        const result = await response.json();
-        
-        if (!result.success) {
-            showMessage('Product not found', 'error');
-            return;
-        }
-        
-        // Get current cart from localStorage
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        
-        // Check if product already in cart
-        const existingProduct = cart.find(item => item.id === productId);
-        
-        if (existingProduct) {
-            existingProduct.quantity += 1;
-        } else {
-            cart.push({
-                id: productId,
-                name: result.data.name,
-                price: result.data.price,
-                quantity: 1
-            });
-        }
-        
-        // Save updated cart
-        localStorage.setItem('cart', JSON.stringify(cart));
-        
-        // Update cart count
-        updateCartCount();
-        
-        // Show success message
-        showMessage(`${result.data.name} added to cart!`, 'success');
-        
-    } catch (error) {
-        console.error('Error adding to cart:', error);
-        
-        // For demo purposes, add sample product if API fails
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        
-        // Add sample product
-        cart.push({
-            id: productId,
-            name: 'Sample Product',
-            price: 49.99,
-            quantity: 1
-        });
-        
-        // Save updated cart
-        localStorage.setItem('cart', JSON.stringify(cart));
-        
-        // Update cart count
-        updateCartCount();
-        
-        // Show success message
-        showMessage('Product added to cart!', 'success');
+  try {
+    const response = await fetch(`/api/product?id=${productId}`);
+    const result = await response.json();
+
+    if (!result.success) {
+      showMessage("Product not found", "error");
+      return;
     }
+
+    // Get current cart from localStorage
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Check if product already in cart
+    const existingProduct = cart.find((item) => item.id === productId);
+
+    if (existingProduct) {
+      existingProduct.quantity += 1;
+    } else {
+      cart.push({
+        id: productId,
+        name: result.data.name,
+        price: result.data.price,
+        quantity: 1,
+      });
+    }
+
+    // Save updated cart
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Update cart count
+    updateCartCount();
+
+    // Show success message
+    showMessage(`${result.data.name} added to cart!`, "success");
+  } catch (error) {
+    console.error("Error adding to cart:", error);
+
+    // For demo purposes, add sample product if API fails
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Add sample product
+    cart.push({
+      id: productId,
+      name: "Sample Product",
+      price: 49.99,
+      quantity: 1,
+    });
+
+    // Save updated cart
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Update cart count
+    updateCartCount();
+
+    // Show success message
+    showMessage("Product added to cart!", "success");
+  }
 }
 
 /**
  * Update cart count in the header
  */
 function updateCartCount() {
-    const cartCountElement = document.querySelector('.cart-count');
-    if (!cartCountElement) return;
-    
-    // Get cart from localStorage
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-    // Calculate total quantity
-    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-    
-    // Update cart count
-    cartCountElement.textContent = totalItems;
-    
-    // Add animation if items in cart
-    if (totalItems > 0) {
-        cartCountElement.classList.add('pulse');
-        setTimeout(() => {
-            cartCountElement.classList.remove('pulse');
-        }, 1000);
-    }
+  const cartCountElement = document.querySelector(".cart-count");
+  if (!cartCountElement) return;
+
+  // Get cart from localStorage
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // Calculate total quantity
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+
+  // Update cart count
+  cartCountElement.textContent = totalItems;
+
+  // Add animation if items in cart
+  if (totalItems > 0) {
+    cartCountElement.classList.add("pulse");
+    setTimeout(() => {
+      cartCountElement.classList.remove("pulse");
+    }, 1000);
+  }
 }
 
 /**
@@ -439,7 +460,7 @@ function updateCartCount() {
  * @param {string} productId - Product ID
  */
 function viewProduct(productId) {
-    window.location.href = `product-detail.html?id=${productId}`;
+  window.location.href = `product-detail.html?id=${productId}`;
 }
 
 /**
@@ -448,14 +469,17 @@ function viewProduct(productId) {
  * @returns {string} - Formatted category name
  */
 function formatCategory(category) {
-    const categories = {
-        'pens': 'Pens',
-        'notebooks': 'Notebooks',
-        'art-supplies': 'Art Supplies',
-        'desk-accessories': 'Desk Accessories'
-    };
-    
-    return categories[category] || category.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase());
+  const categories = {
+    pens: "Pens",
+    notebooks: "Notebooks",
+    "art-supplies": "Art Supplies",
+    "desk-accessories": "Desk Accessories",
+  };
+
+  return (
+    categories[category] ||
+    category.replace("-", " ").replace(/\b\w/g, (l) => l.toUpperCase())
+  );
 }
 
 /**
@@ -464,7 +488,7 @@ function formatCategory(category) {
  * @returns {string} - Formatted brand name
  */
 function formatBrand(brand) {
-    return brand || 'ChenOne';
+  return brand || "ChenOne";
 }
 
 /**
@@ -472,52 +496,52 @@ function formatBrand(brand) {
  * @param {string} message - Message text
  * @param {string} type - Message type (success, error, info)
  */
-function showMessage(message, type = 'info') {
-    // Check if message container exists
-    let messageContainer = document.querySelector('.message-container');
-    
-    // Create message container if it doesn't exist
-    if (!messageContainer) {
-        messageContainer = document.createElement('div');
-        messageContainer.className = 'message-container';
-        document.body.appendChild(messageContainer);
-    }
-    
-    // Create message element
-    const messageElement = document.createElement('div');
-    messageElement.className = `message ${type}`;
-    messageElement.innerHTML = `
+function showMessage(message, type = "info") {
+  // Check if message container exists
+  let messageContainer = document.querySelector(".message-container");
+
+  // Create message container if it doesn't exist
+  if (!messageContainer) {
+    messageContainer = document.createElement("div");
+    messageContainer.className = "message-container";
+    document.body.appendChild(messageContainer);
+  }
+
+  // Create message element
+  const messageElement = document.createElement("div");
+  messageElement.className = `message ${type}`;
+  messageElement.innerHTML = `
         <div class="message-icon">${getMessageIcon(type)}</div>
         <div class="message-content">${message}</div>
         <button class="message-close"><i class="fas fa-times"></i></button>
     `;
-    
-    // Add message to container
-    messageContainer.appendChild(messageElement);
-    
-    // Add message style
-    messageElement.style.cssText = getMessageStyle(type);
-    
-    // Add close button functionality
-    const closeButton = messageElement.querySelector('.message-close');
-    closeButton.addEventListener('click', () => {
-        messageElement.classList.add('fade-out');
-        setTimeout(() => {
-            messageElement.remove();
-        }, 300);
-    });
-    
-    // Auto remove after 5 seconds
+
+  // Add message to container
+  messageContainer.appendChild(messageElement);
+
+  // Add message style
+  messageElement.style.cssText = getMessageStyle(type);
+
+  // Add close button functionality
+  const closeButton = messageElement.querySelector(".message-close");
+  closeButton.addEventListener("click", () => {
+    messageElement.classList.add("fade-out");
     setTimeout(() => {
+      messageElement.remove();
+    }, 300);
+  });
+
+  // Auto remove after 5 seconds
+  setTimeout(() => {
+    if (messageElement.parentNode) {
+      messageElement.classList.add("fade-out");
+      setTimeout(() => {
         if (messageElement.parentNode) {
-            messageElement.classList.add('fade-out');
-            setTimeout(() => {
-                if (messageElement.parentNode) {
-                    messageElement.remove();
-                }
-            }, 300);
+          messageElement.remove();
         }
-    }, 5000);
+      }, 300);
+    }
+  }, 5000);
 }
 
 /**
@@ -526,14 +550,14 @@ function showMessage(message, type = 'info') {
  * @returns {string} - Icon HTML
  */
 function getMessageIcon(type) {
-    const icons = {
-        'success': '<i class="fas fa-check-circle"></i>',
-        'error': '<i class="fas fa-exclamation-circle"></i>',
-        'info': '<i class="fas fa-info-circle"></i>',
-        'warning': '<i class="fas fa-exclamation-triangle"></i>'
-    };
-    
-    return icons[type] || icons.info;
+  const icons = {
+    success: '<i class="fas fa-check-circle"></i>',
+    error: '<i class="fas fa-exclamation-circle"></i>',
+    info: '<i class="fas fa-info-circle"></i>',
+    warning: '<i class="fas fa-exclamation-triangle"></i>',
+  };
+
+  return icons[type] || icons.info;
 }
 
 /**
@@ -542,14 +566,17 @@ function getMessageIcon(type) {
  * @returns {string} - CSS styles
  */
 function getMessageStyle(type) {
-    const styles = {
-        'success': 'background-color: #d4edda; color: #155724; border-left: 4px solid #28a745;',
-        'error': 'background-color: #f8d7da; color: #721c24; border-left: 4px solid #dc3545;',
-        'info': 'background-color: #d1ecf1; color: #0c5460; border-left: 4px solid #17a2b8;',
-        'warning': 'background-color: #fff3cd; color: #856404; border-left: 4px solid #ffc107;'
-    };
-    
-    return styles[type] || styles.info;
+  const styles = {
+    success:
+      "background-color: #d4edda; color: #155724; border-left: 4px solid #28a745;",
+    error:
+      "background-color: #f8d7da; color: #721c24; border-left: 4px solid #dc3545;",
+    info: "background-color: #d1ecf1; color: #0c5460; border-left: 4px solid #17a2b8;",
+    warning:
+      "background-color: #fff3cd; color: #856404; border-left: 4px solid #ffc107;",
+  };
+
+  return styles[type] || styles.info;
 }
 
 /**
@@ -557,7 +584,7 @@ function getMessageStyle(type) {
  * @param {string} message - Error message
  */
 function showErrorMessage(message) {
-    showMessage(message, 'error');
+  showMessage(message, "error");
 }
 
 /**
@@ -565,56 +592,57 @@ function showErrorMessage(message) {
  * @param {Event} event - Form submit event
  */
 function subscribeNewsletter(event) {
-    event.preventDefault();
-    
-    const form = event.target;
-    const emailInput = form.querySelector('input[type="email"]');
-    const email = emailInput.value.trim();
-    
-    if (!email) {
-        showMessage('Please enter your email address', 'warning');
-        return;
-    }
-    
-    // Email validation regex
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        showMessage('Please enter a valid email address', 'warning');
-        return;
-    }
-    
-    // Show loading state
-    const submitButton = form.querySelector('button[type="submit"]');
-    const originalText = submitButton.innerHTML;
-    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
-    submitButton.disabled = true;
-    
-    // Simulate API call
-    setTimeout(() => {
-        // Reset form
-        form.reset();
-        
-        // Reset button
-        submitButton.innerHTML = originalText;
-        submitButton.disabled = false;
-        
-        // Show success message
-        showMessage('Thank you for subscribing to our newsletter!', 'success');
-        
-        // Store subscription in localStorage for demo
-        const subscribers = JSON.parse(localStorage.getItem('subscribers')) || [];
-        subscribers.push({
-            email: email,
-            date: new Date().toISOString()
-        });
-        localStorage.setItem('subscribers', JSON.stringify(subscribers));
-    }, 1500);
+  event.preventDefault();
+
+  const form = event.target;
+  const emailInput = form.querySelector('input[type="email"]');
+  const email = emailInput.value.trim();
+
+  if (!email) {
+    showMessage("Please enter your email address", "warning");
+    return;
+  }
+
+  // Email validation regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    showMessage("Please enter a valid email address", "warning");
+    return;
+  }
+
+  // Show loading state
+  const submitButton = form.querySelector('button[type="submit"]');
+  const originalText = submitButton.innerHTML;
+  submitButton.innerHTML =
+    '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+  submitButton.disabled = true;
+
+  // Simulate API call
+  setTimeout(() => {
+    // Reset form
+    form.reset();
+
+    // Reset button
+    submitButton.innerHTML = originalText;
+    submitButton.disabled = false;
+
+    // Show success message
+    showMessage("Thank you for subscribing to our newsletter!", "success");
+
+    // Store subscription in localStorage for demo
+    const subscribers = JSON.parse(localStorage.getItem("subscribers")) || [];
+    subscribers.push({
+      email: email,
+      date: new Date().toISOString(),
+    });
+    localStorage.setItem("subscribers", JSON.stringify(subscribers));
+  }, 1500);
 }
 
 // Add CSS for messages
 (function addMessageStyles() {
-    const style = document.createElement('style');
-    style.textContent = `
+  const style = document.createElement("style");
+  style.textContent = `
         .message-container {
             position: fixed;
             bottom: 20px;
@@ -700,18 +728,18 @@ function subscribeNewsletter(event) {
             }
         }
     `;
-    document.head.appendChild(style);
+  document.head.appendChild(style);
 })();
 
 /**
  * Initialize counter animations for stats
  */
 function initializeCounters() {
-    // Client counter
-    animateCounter('clientCounter', 0, 5000, 2000, '+');
-    
-    // Brand counter
-    animateCounter('brandCounter', 0, 50, 1500, '+');
+  // Client counter
+  animateCounter("clientCounter", 0, 5000, 2000, "+");
+
+  // Brand counter
+  animateCounter("brandCounter", 0, 50, 1500, "+");
 }
 
 /**
@@ -722,36 +750,39 @@ function initializeCounters() {
  * @param {number} duration - Duration in milliseconds
  * @param {string} suffix - Optional suffix to add after the number
  */
-function animateCounter(elementId, start, end, duration, suffix = '') {
-    const element = document.getElementById(elementId);
-    if (!element) return;
-    
-    // Check if element is in viewport before starting animation
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Start animation when element is visible
-                let startTime = null;
-                
-                function step(timestamp) {
-                    if (!startTime) startTime = timestamp;
-                    const progress = Math.min((timestamp - startTime) / duration, 1);
-                    const value = Math.floor(progress * (end - start) + start);
-                    element.textContent = value + suffix;
-                    
-                    if (progress < 1) {
-                        window.requestAnimationFrame(step);
-                    } else {
-                        // Animation complete
-                        element.textContent = end + suffix;
-                        observer.disconnect();
-                    }
-                }
-                
-                window.requestAnimationFrame(step);
+function animateCounter(elementId, start, end, duration, suffix = "") {
+  const element = document.getElementById(elementId);
+  if (!element) return;
+
+  // Check if element is in viewport before starting animation
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Start animation when element is visible
+          let startTime = null;
+
+          function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            const value = Math.floor(progress * (end - start) + start);
+            element.textContent = value + suffix;
+
+            if (progress < 1) {
+              window.requestAnimationFrame(step);
+            } else {
+              // Animation complete
+              element.textContent = end + suffix;
+              observer.disconnect();
             }
-        });
-    }, { threshold: 0.1 });
-    
-    observer.observe(element);
-} 
+          }
+
+          window.requestAnimationFrame(step);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  observer.observe(element);
+}
